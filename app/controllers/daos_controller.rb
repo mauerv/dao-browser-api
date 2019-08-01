@@ -10,7 +10,7 @@ class DaosController < ApplicationController
 
   # GET /daos/1
   def show
-    render json: @dao, include: [:podcasts, :articles, :documents, :audits, :contracts, :tags]
+    render json: @dao, include: [:podcasts, :articles, :documents, :audits, :contracts, :tags, :image]
   end
 
   # POST /daos
