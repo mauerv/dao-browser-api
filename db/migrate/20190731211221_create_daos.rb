@@ -3,7 +3,7 @@ class CreateDaos < ActiveRecord::Migration[5.2]
     create_table :daos do |t|
       t.string :name
       t.string :subtitle
-      t.string :description
+      t.text :description
       t.string :website
       t.string :contract_proof
       t.string :mail
@@ -13,6 +13,7 @@ class CreateDaos < ActiveRecord::Migration[5.2]
       t.string :telegram
       t.string :reddit
       t.string :discord
+      t.string :youtube
 
       t.timestamps
     end

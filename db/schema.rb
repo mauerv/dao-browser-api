@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_01_150459) do
+ActiveRecord::Schema.define(version: 2019_08_01_181908) do
 
   create_table "articles", force: :cascade do |t|
     t.string "title"
@@ -72,7 +72,7 @@ ActiveRecord::Schema.define(version: 2019_08_01_150459) do
   create_table "daos", force: :cascade do |t|
     t.string "name"
     t.string "subtitle"
-    t.string "description"
+    t.text "description"
     t.string "website"
     t.string "contract_proof"
     t.string "mail"
@@ -82,14 +82,25 @@ ActiveRecord::Schema.define(version: 2019_08_01_150459) do
     t.string "telegram"
     t.string "reddit"
     t.string "discord"
+    t.string "youtube"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "status_id"
     t.integer "blockchain_id"
     t.integer "framework_id"
+    t.text "assets_governed"
+    t.string "decentralization_level"
+    t.text "centralization_points"
     t.index ["blockchain_id"], name: "index_daos_on_blockchain_id"
     t.index ["framework_id"], name: "index_daos_on_framework_id"
     t.index ["status_id"], name: "index_daos_on_status_id"
+  end
+
+  create_table "daos_tags", id: false, force: :cascade do |t|
+    t.integer "tag_id", null: false
+    t.integer "dao_id", null: false
+    t.index ["dao_id", "tag_id"], name: "index_daos_tags_on_dao_id_and_tag_id"
+    t.index ["tag_id", "dao_id"], name: "index_daos_tags_on_tag_id_and_dao_id"
   end
 
   create_table "documents", force: :cascade do |t|

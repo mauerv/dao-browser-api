@@ -5,6 +5,7 @@ class Dao < ApplicationRecord
   has_many :audits
   has_many :contracts
   has_and_belongs_to_many :contributors
+  has_and_belongs_to_many :tags
   belongs_to :status
   belongs_to :blockchain
   belongs_to :framework
