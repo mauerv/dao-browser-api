@@ -1,11 +1,3 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
-
 Status.create(text: "Active")
 Framework.create(name: "Custom")
 Blockchain.create(name: "Ethereum")
@@ -83,6 +75,28 @@ dao.tags.create([
   },
   {
     name: "eth 2.0"
+  }
+])
+dao.contributors.create([
+  {
+    name: "Ameen Soleimani",
+    twitter: "ameensol",
+  },
+  {
+    name: "James Young",
+    twitter: "jamesyoung",
+  },
+  {
+    name: "Rahul Sethuram",
+    twitter: "RHLSTHRM",
+  },
+  {
+    name: "Layne Haber",
+    twitter: "LayneHaber",
+  },
+  {
+    name: "Arjun Bhuptani",
+    twitter: "Arjun_Bhuptani",
   }
 ])
 dao.image.attach(io: File.open(Rails.root.join('public', 'moloch.png')), filename: 'moloch.png')
