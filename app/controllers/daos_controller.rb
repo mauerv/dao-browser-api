@@ -5,12 +5,12 @@ class DaosController < ApplicationController
   def index
     @daos = Dao.all
 
-    render json: @daos
+    render json: @daos, include: [:framework, :blockchain]
   end
 
   # GET /daos/1
   def show
-    render json: @dao, include: [:podcasts, :articles, :documents, :audits, :contracts, :tags, :image]
+    render json: @dao, include: [:podcasts, :articles, :documents, { audits: { include: :auditor } }, :contracts, :tags, :contributors, :image, :blockchain, :framework, :status]
   end
 
   # POST /daos

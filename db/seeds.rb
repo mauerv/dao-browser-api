@@ -85,3 +85,4 @@ dao.tags.create([
     name: "eth 2.0"
   }
 ])
+dao.image.attach(io: File.open(Rails.root.join('public', 'moloch.png')), filename: 'moloch.png')
