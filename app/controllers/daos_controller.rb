@@ -15,7 +15,6 @@ class DaosController < ApplicationController
 
   # POST /daos
   def create
-    byebug
     @dao = Dao.new(dao_params)
     if @dao.save
       render json: @dao, status: :created, location: @dao
