@@ -15,8 +15,8 @@ class DaosController < ApplicationController
 
   # POST /daos
   def create
+    byebug
     @dao = Dao.new(dao_params)
-
     if @dao.save
       render json: @dao, status: :created, location: @dao
     else
@@ -46,6 +46,6 @@ class DaosController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def dao_params
-      params.require(:dao).permit(:name, :subtitle, :description, :website, :contract_proof, :mail, :github, :twitter, :medium, :telegram, :reddit, :discord)
+      params.require(:dao).permit(:name, :subtitle, :description, :website, :contract_proof, :mail, :github, :twitter, :medium, :telegram, :reddit, :discord, :youtube, :assets_governed, :deventralization_level, :centralization_points, :blockchain_id, :framework_id, :status_id, :image)
     end
 end

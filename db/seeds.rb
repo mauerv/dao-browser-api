@@ -1,4 +1,4 @@
-Status.create(text: "Active")
+Status.create(name: "Active")
 Framework.create(name: "Custom")
 Blockchain.create(name: "Ethereum")
 dao = Dao.create(
