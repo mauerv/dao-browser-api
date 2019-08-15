@@ -10,13 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_03_122804) do
+ActiveRecord::Schema.define(version: 2019_08_01_220803) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
-    t.integer "record_id", null: false
-    t.integer "blob_id", null: false
+    t.bigint "record_id", null: false
+    t.bigint "blob_id", null: false
     t.datetime "created_at", null: false
     t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
     t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
@@ -37,7 +40,7 @@ ActiveRecord::Schema.define(version: 2019_08_03_122804) do
     t.string "title"
     t.string "url"
     t.date "date"
-    t.integer "dao_id"
+    t.bigint "dao_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["dao_id"], name: "index_articles_on_dao_id"
@@ -53,8 +56,8 @@ ActiveRecord::Schema.define(version: 2019_08_03_122804) do
   create_table "audits", force: :cascade do |t|
     t.string "url"
     t.date "date"
-    t.integer "auditor_id"
-    t.integer "dao_id"
+    t.bigint "auditor_id"
+    t.bigint "dao_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["auditor_id"], name: "index_audits_on_auditor_id"
@@ -71,7 +74,7 @@ ActiveRecord::Schema.define(version: 2019_08_03_122804) do
     t.string "name"
     t.string "address"
     t.string "description"
-    t.integer "dao_id"
+    t.bigint "dao_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["dao_id"], name: "index_contracts_on_dao_id"
@@ -85,8 +88,8 @@ ActiveRecord::Schema.define(version: 2019_08_03_122804) do
   end
 
   create_table "contributors_daos", id: false, force: :cascade do |t|
-    t.integer "contributor_id", null: false
-    t.integer "dao_id", null: false
+    t.bigint "contributor_id", null: false
+    t.bigint "dao_id", null: false
     t.index ["dao_id", "contributor_id"], name: "index_contributors_daos_on_dao_id_and_contributor_id"
   end
 
@@ -106,9 +109,9 @@ ActiveRecord::Schema.define(version: 2019_08_03_122804) do
     t.string "youtube"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "status_id"
-    t.integer "blockchain_id"
-    t.integer "framework_id"
+    t.bigint "status_id"
+    t.bigint "blockchain_id"
+    t.bigint "framework_id"
     t.text "assets_governed"
     t.string "decentralization_level"
     t.text "centralization_points"
@@ -118,8 +121,8 @@ ActiveRecord::Schema.define(version: 2019_08_03_122804) do
   end
 
   create_table "daos_tags", id: false, force: :cascade do |t|
-    t.integer "tag_id", null: false
-    t.integer "dao_id", null: false
+    t.bigint "tag_id", null: false
+    t.bigint "dao_id", null: false
     t.index ["dao_id", "tag_id"], name: "index_daos_tags_on_dao_id_and_tag_id"
     t.index ["tag_id", "dao_id"], name: "index_daos_tags_on_tag_id_and_dao_id"
   end
@@ -127,7 +130,7 @@ ActiveRecord::Schema.define(version: 2019_08_03_122804) do
   create_table "documents", force: :cascade do |t|
     t.string "title"
     t.string "url"
-    t.integer "dao_id"
+    t.bigint "dao_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["dao_id"], name: "index_documents_on_dao_id"
@@ -143,7 +146,7 @@ ActiveRecord::Schema.define(version: 2019_08_03_122804) do
     t.string "title"
     t.string "url"
     t.date "date"
-    t.integer "dao_id"
+    t.bigint "dao_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["dao_id"], name: "index_podcasts_on_dao_id"
@@ -161,4 +164,14 @@ ActiveRecord::Schema.define(version: 2019_08_03_122804) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "articles", "daos"
+  add_foreign_key "audits", "auditors"
+  add_foreign_key "audits", "daos"
+  add_foreign_key "contracts", "daos"
+  add_foreign_key "daos", "blockchains"
+  add_foreign_key "daos", "frameworks"
+  add_foreign_key "daos", "statuses"
+  add_foreign_key "documents", "daos"
+  add_foreign_key "podcasts", "daos"
 end
