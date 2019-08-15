@@ -1,4 +1,6 @@
 class ArticlesController < ApplicationController
+  include Secured
+
   before_action :set_article, only: [:show, :update, :destroy]
 
   # GET /articles

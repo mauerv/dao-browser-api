@@ -1,4 +1,6 @@
 class ContributorsController < ApplicationController
+  include Secured
+
   before_action :set_contributor, only: [:show, :update, :destroy]
 
   # GET /contributors

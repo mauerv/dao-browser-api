@@ -1,4 +1,6 @@
 class ContractsController < ApplicationController
+  include Secured
+
   before_action :set_contract, only: [:show, :update, :destroy]
 
   # GET /contracts

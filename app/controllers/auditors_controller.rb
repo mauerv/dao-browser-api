@@ -1,4 +1,6 @@
 class AuditorsController < ApplicationController
+  include Secured
+
   before_action :set_auditor, only: [:show, :update, :destroy]
 
   # GET /auditors

@@ -1,4 +1,6 @@
 class DaosController < ApplicationController
+  include Secured
+
   before_action :set_dao, only: [:show, :update, :destroy, :remove_tag_from_dao, :add_tag_to_dao, :remove_contributor_from_dao, :add_contributor_to_dao]
 
   # GET /daos

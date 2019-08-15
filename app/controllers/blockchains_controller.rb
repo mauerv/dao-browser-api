@@ -1,4 +1,6 @@
 class BlockchainsController < ApplicationController
+  include Secured
+
   before_action :set_blockchain, only: [:show, :update, :destroy]
 
   # GET /blockchains

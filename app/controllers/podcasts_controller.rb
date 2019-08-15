@@ -1,4 +1,6 @@
 class PodcastsController < ApplicationController
+  include Secured
+
   before_action :set_podcast, only: [:show, :update, :destroy]
 
   # GET /podcasts

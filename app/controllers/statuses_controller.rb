@@ -1,4 +1,6 @@
 class StatusesController < ApplicationController
+  include Secured
+
   before_action :set_status, only: [:show, :update, :destroy]
 
   # GET /statuses

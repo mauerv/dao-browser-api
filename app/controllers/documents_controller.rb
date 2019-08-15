@@ -1,4 +1,6 @@
 class DocumentsController < ApplicationController
+  include Secured
+
   before_action :set_document, only: [:show, :update, :destroy]
 
   # GET /documents

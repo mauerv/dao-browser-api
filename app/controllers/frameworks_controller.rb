@@ -1,4 +1,6 @@
 class FrameworksController < ApplicationController
+  include Secured
+
   before_action :set_framework, only: [:show, :update, :destroy]
 
   # GET /frameworks
