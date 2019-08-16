@@ -57,6 +57,7 @@ Rails.application.configure do
   config.action_mailer.perform_caching = false
 
   Rails.application.routes.default_url_options[:host] = 'dao-browser-api.herokuapp.com'
+  Rails.application.routes.default_url_options[:protocol] = 'https'
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
